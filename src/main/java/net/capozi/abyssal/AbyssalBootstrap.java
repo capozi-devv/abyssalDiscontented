@@ -1,6 +1,11 @@
 package net.capozi.abyssal;
 
-import net.capozi.abyssal.items.AbyssalCombatItems;
+import net.capozi.abyssal.block.AbyssalBlockEntityRendererBootstrap;
+import net.capozi.abyssal.block.AbyssalBlocksBootstrap;
+import net.capozi.abyssal.block.AbyssalBlockEntityBootstrap;
+import net.capozi.abyssal.item.AbyssalItemGroups;
+import net.capozi.abyssal.item.AbyssalItemsBootstrap;
+
 import net.fabricmc.api.ModInitializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,6 +16,10 @@ public class AbyssalBootstrap implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
-		AbyssalCombatItems.registerModItems();
+		AbyssalItemsBootstrap.registerModItems();
+		AbyssalBlocksBootstrap.registerModBlocks();
+		AbyssalItemGroups.registerItemGroups();
+		AbyssalBlockEntityBootstrap.registerBlockEntities();
+		AbyssalBlockEntityRendererBootstrap.registerBlockEntityRenderers();
 	}
 }
