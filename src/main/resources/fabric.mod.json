@@ -15,7 +15,7 @@
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"net.capozi.abyssal.AbyssalBootstrap"
+			"net.capozi.abyssal.Abyssal"
 		],
 		"client": [
 			"net.capozi.abyssal.AbyssalClient"

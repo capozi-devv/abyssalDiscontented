@@ -9,17 +9,18 @@ import net.minecraft.util.math.BlockPos;
 
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.ItemStack;
+
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtHelper;
 import net.minecraft.registry.Registries;
 
 public class MulliganBlockEntity extends BlockEntity {
-    private BlockState mimicState; // Stores the block state it mimics
-    private ItemStack consumedItem; // Stores the item used to change texture
+    public BlockState mimicState;
+    public ItemStack consumedItem;
 
     public MulliganBlockEntity(BlockPos pos, BlockState state) {
         super(AbyssalBlockEntityBootstrap.MULLIGAN_BLOCK_ENTITY, pos, state);
-        this.mimicState = Blocks.STONE.getDefaultState(); // Default mimic block
+        this.mimicState = state; // Use the block entity's initial state instead
         this.consumedItem = ItemStack.EMPTY;
     }
 
@@ -28,6 +29,15 @@ public class MulliganBlockEntity extends BlockEntity {
     }
 
     public void setMimicState(BlockState newState) {
+        if (newState != null && newState.getBlock() != this.getCachedState().getBlock()) {
+            this.mimicState = newState;
+            markDirty();
+            if (world != null && !world.isClient) {
+                world.updateListeners(pos, getCachedState(), getCachedState(), 3);
+                world.updateNeighborsAlways(pos, this.getCachedState().getBlock()); // Forces light recalculation
+            }
+        }
+
         if (mimicState == newState) return;
 
         this.mimicState = newState;
@@ -76,7 +86,6 @@ public class MulliganBlockEntity extends BlockEntity {
     // Updates block texture when right-clicked with a new block
     public void updateMimicTexture(ItemStack heldItem) {
         if (!(heldItem.getItem() instanceof BlockItem blockItem)) return;
-
         BlockState newMimicState = blockItem.getBlock().getDefaultState();
         setMimicState(newMimicState);
     }

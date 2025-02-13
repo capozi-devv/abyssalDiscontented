@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "abyssal:item/slumbering_relic"
+  },
+  "display": {
+    "thirdperson_righthand": {
+      "scale": [2, 2, 1.24],
+      "rotation": [0, -90, 55],
+      "translation": [0, 12, -1]
+    },
+    "thirdperson_lefthand": {
+      "scale": [2, 2, 1.24],
+      "rotation": [0, 90, -55],
+      "translation": [0, 12, -1]
+    },
+    "firstperson_righthand": {
+      "scale": [1.75, 1.75, 1.75],
+      "rotation": [0, -90, 25],
+      "translation": [1, 3, 1]
+    },
+    "firstperson_lefthand": {
+      "scale": [1.75, 1.75, 1.75],
+      "rotation": [0, 90, -25],
+      "translation": [1, 3, 1]
+    },
+    "ground": {
+      "scale": [2, 2, 2],
+      "translation": [0, 2, 0]
+    }
+  }
+}
