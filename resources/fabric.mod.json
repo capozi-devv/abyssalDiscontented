@@ -1,0 +1,39 @@
+{
+	"schemaVersion": 1,
+	"id": "abyssal",
+	"version": "${version}",
+	"name": "Abyssal",
+	"description": "May the Unenlightened Become Enraptured",
+	"authors": [
+		"Capozi"
+	],
+	"contact": {
+		"sources": "https://github.com/capozi-devv/abyssalDiscontented"
+	},
+	"license": "MIT",
+	"icon": "assets/abyssal/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"net.capozi.abyssal.Abyssal"
+		],
+		"client": [
+			"net.capozi.abyssal.AbyssalClient"
+		],
+		"fabric-datagen": [
+			"net.capozi.abyssal.AbyssalDataGenerator"
+		]
+	},
+	"mixins": [
+		"abyssal.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.16.9",
+		"minecraft": "~1.20.1",
+		"java": ">=17",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
